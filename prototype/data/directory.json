@@ -1,0 +1,25 @@
+{
+  "_note": "SYNTHETIC DATA. Made-up employees of the fictional company Kestrel Fintech. Any resemblance to real people is accidental.",
+  "people": [
+    { "id": "priya.sharma", "name": "Priya Sharma", "title": "Product Analyst", "dept": "Product", "manager": "neha.kapoor", "type": "employee", "active": true, "persona": "Employee" },
+    { "id": "karan.singh", "name": "Karan Singh", "title": "Backend Engineer", "dept": "Engineering", "manager": "rahul.verma", "type": "employee", "active": true, "persona": "Employee" },
+    { "id": "aisha.khan", "name": "Aisha Khan", "title": "Sales Executive", "dept": "Sales", "manager": "meera.joshi", "type": "employee", "active": true, "persona": "Employee" },
+    { "id": "rohan.gupta", "name": "Rohan Gupta", "title": "Finance Associate", "dept": "Finance", "manager": "kavya.nair", "type": "employee", "active": true, "persona": "Employee" },
+    { "id": "dev.patel", "name": "Dev Patel", "title": "Data Engineer (contractor)", "dept": "Data", "manager": "vikram.rao", "type": "contractor", "active": true, "persona": "Contractor" },
+    { "id": "lina.thomas", "name": "Lina Thomas", "title": "UX Designer", "dept": "Design", "manager": "sana.iqbal", "type": "employee", "active": true, "persona": "Employee" },
+    { "id": "old.account", "name": "Sameer Bose", "title": "Former Support Lead", "dept": "Support", "manager": "neha.kapoor", "type": "employee", "active": false, "persona": "Leaver" },
+    { "id": "neha.kapoor", "name": "Neha Kapoor", "title": "Product Manager", "dept": "Product", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "Manager" },
+    { "id": "rahul.verma", "name": "Rahul Verma", "title": "Engineering Manager", "dept": "Engineering", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "Manager / app owner" },
+    { "id": "meera.joshi", "name": "Meera Joshi", "title": "Sales Director", "dept": "Sales", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "Manager / app owner" },
+    { "id": "kavya.nair", "name": "Kavya Nair", "title": "Finance Controller", "dept": "Finance", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "Manager / app owner" },
+    { "id": "vikram.rao", "name": "Vikram Rao", "title": "Head of Data", "dept": "Data", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "Manager / app owner" },
+    { "id": "sana.iqbal", "name": "Sana Iqbal", "title": "Design Lead", "dept": "Design", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "Manager / app owner" },
+    { "id": "arjun.mehta", "name": "Arjun Mehta", "title": "Platform Lead", "dept": "Engineering", "manager": "rahul.verma", "type": "employee", "active": true, "persona": "App owner" },
+    { "id": "ananya.das", "name": "Ananya Das", "title": "HR Business Partner", "dept": "People", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "App owner" },
+    { "id": "farhan.sheikh", "name": "Farhan Sheikh", "title": "COO", "dept": "Leadership", "manager": null, "type": "employee", "active": true, "persona": "Executive" },
+    { "id": "tara.menon", "name": "Tara Menon", "title": "IT Service Desk Analyst", "dept": "IT", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "IT analyst", "groups": ["it-admin"] },
+    { "id": "omar.ali", "name": "Omar Ali", "title": "Security & Audit Lead", "dept": "Security", "manager": "farhan.sheikh", "type": "employee", "active": true, "persona": "Security auditor", "groups": ["security"] }
+  ],
+  "fallback_approver": "omar.ali",
+  "agent_principal": "svc-accesspilot"
+}

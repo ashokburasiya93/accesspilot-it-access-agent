@@ -1,0 +1,102 @@
+{
+  "_note": "SYNTHETIC DATA. A made-up app and role catalog for the fictional company Kestrel Fintech, built for an AI PM course project. Role risk: low | standard | admin. sensitive_data marks roles that can read customer, financial or people data.",
+  "apps": [
+    {
+      "id": "wiki", "name": "Team Wiki (Confluence)", "aliases": ["wiki", "confluence", "team wiki", "knowledge base", "kb", "documentation space", "docs space"],
+      "owner": "rahul.verma", "backup_owner": "neha.kapoor", "data_class": "internal",
+      "roles": [
+        { "id": "viewer", "name": "Viewer", "risk": "low", "sensitive_data": false, "default_days": 30, "max_days": 180, "can": "Read pages and comment", "keywords": ["read", "view", "see", "look", "comment"] },
+        { "id": "editor", "name": "Editor", "risk": "standard", "sensitive_data": false, "default_days": 90, "max_days": 180, "can": "Create and edit pages", "keywords": ["edit", "write", "update", "create pages", "contribute", "publish"] },
+        { "id": "space-admin", "name": "Space admin", "risk": "admin", "sensitive_data": false, "default_days": 30, "max_days": 30, "can": "Manage space permissions and settings", "keywords": ["admin", "permissions", "manage space", "settings"] }
+      ]
+    },
+    {
+      "id": "github", "name": "GitHub (kestrel org)", "aliases": ["github", "git hub", "repo", "repository", "repos", "source code", "code base", "codebase", "pull request"],
+      "owner": "arjun.mehta", "backup_owner": "rahul.verma", "data_class": "internal",
+      "roles": [
+        { "id": "read", "name": "Read", "risk": "low", "sensitive_data": false, "default_days": 30, "max_days": 180, "can": "Clone and view code, open issues", "keywords": ["read", "view", "clone", "look at", "browse"] },
+        { "id": "write", "name": "Write", "risk": "standard", "sensitive_data": false, "default_days": 90, "max_days": 180, "can": "Push branches and open pull requests", "keywords": ["push", "commit", "write", "pull request", "pr", "contribute", "merge"] },
+        { "id": "admin", "name": "Repo admin", "risk": "admin", "sensitive_data": false, "default_days": 14, "max_days": 30, "can": "Change repo settings, branch protection and secrets", "keywords": ["admin", "settings", "branch protection", "webhook", "secrets"] }
+      ]
+    },
+    {
+      "id": "jira", "name": "Jira", "aliases": ["jira", "tickets", "issue tracker", "board", "sprint board", "backlog"],
+      "owner": "neha.kapoor", "backup_owner": "rahul.verma", "data_class": "internal",
+      "roles": [
+        { "id": "viewer", "name": "Viewer", "risk": "low", "sensitive_data": false, "default_days": 30, "max_days": 180, "can": "Browse issues and boards", "keywords": ["view", "read", "see", "browse", "follow"] },
+        { "id": "member", "name": "Member", "risk": "standard", "sensitive_data": false, "default_days": 90, "max_days": 180, "can": "Create, edit and move issues", "keywords": ["create", "edit", "update", "move", "log", "raise", "work on"] },
+        { "id": "project-admin", "name": "Project admin", "risk": "admin", "sensitive_data": false, "default_days": 30, "max_days": 30, "can": "Manage workflows and project settings", "keywords": ["admin", "workflow", "configure", "settings"] }
+      ]
+    },
+    {
+      "id": "figma", "name": "Figma", "aliases": ["figma", "design files", "designs", "mockups", "prototype designs"],
+      "owner": "sana.iqbal", "backup_owner": "neha.kapoor", "data_class": "internal",
+      "roles": [
+        { "id": "viewer", "name": "Viewer", "risk": "low", "sensitive_data": false, "default_days": 30, "max_days": 180, "can": "View and comment on designs", "keywords": ["view", "see", "comment", "review", "look"] },
+        { "id": "editor", "name": "Editor", "risk": "standard", "sensitive_data": false, "default_days": 90, "max_days": 180, "can": "Edit design files (paid seat)", "keywords": ["edit", "design", "change", "create"] }
+      ]
+    },
+    {
+      "id": "tableau", "name": "Tableau dashboards", "aliases": ["tableau", "dashboard", "dashboards", "reports", "kpi dashboard", "bi"],
+      "owner": "vikram.rao", "backup_owner": "neha.kapoor", "data_class": "internal",
+      "roles": [
+        { "id": "viewer", "name": "Viewer", "risk": "low", "sensitive_data": false, "default_days": 30, "max_days": 180, "can": "View published dashboards", "keywords": ["view", "see", "look", "read", "check"] },
+        { "id": "creator", "name": "Creator", "risk": "standard", "sensitive_data": false, "default_days": 90, "max_days": 180, "can": "Build and publish dashboards", "keywords": ["build", "create", "publish", "author", "make"] }
+      ]
+    },
+    {
+      "id": "finance-drive", "name": "Finance shared drive", "aliases": ["finance drive", "finance shared drive", "finance folder", "finance share", "budget folder", "fp&a drive"],
+      "owner": "kavya.nair", "backup_owner": "vikram.rao", "data_class": "confidential",
+      "roles": [
+        { "id": "viewer", "name": "Viewer", "risk": "low", "sensitive_data": true, "default_days": 30, "max_days": 90, "can": "Read budgets and forecasts", "keywords": ["view", "read", "see", "look", "open"] },
+        { "id": "editor", "name": "Editor", "risk": "standard", "sensitive_data": true, "default_days": 30, "max_days": 90, "can": "Edit budgets and forecasts", "keywords": ["edit", "update", "change", "write", "upload"] }
+      ]
+    },
+    {
+      "id": "salesforce", "name": "Salesforce CRM", "aliases": ["salesforce", "crm", "sfdc", "customer accounts", "leads", "opportunities"],
+      "owner": "meera.joshi", "backup_owner": "vikram.rao", "data_class": "confidential",
+      "roles": [
+        { "id": "read-only", "name": "Read only", "risk": "low", "sensitive_data": true, "default_days": 30, "max_days": 90, "can": "View accounts, contacts and opportunities (customer PII)", "keywords": ["view", "read", "see", "look up", "check"] },
+        { "id": "sales-user", "name": "Sales user", "risk": "standard", "sensitive_data": true, "default_days": 90, "max_days": 180, "can": "Create and update leads and opportunities", "keywords": ["create", "update", "edit", "log", "manage leads", "work leads"] },
+        { "id": "sys-admin", "name": "System admin", "risk": "admin", "sensitive_data": true, "default_days": 7, "max_days": 14, "can": "Change org configuration and export all data", "keywords": ["admin", "configure", "export all", "setup"] }
+      ]
+    },
+    {
+      "id": "aws-prod", "name": "AWS production account", "aliases": ["aws", "aws prod", "production aws", "prod account", "amazon web services", "cloud console", "prod"],
+      "owner": "arjun.mehta", "backup_owner": "farhan.sheikh", "data_class": "restricted",
+      "roles": [
+        { "id": "read-only", "name": "ReadOnly", "risk": "standard", "sensitive_data": false, "default_days": 14, "max_days": 30, "can": "View resources, logs and metrics", "keywords": ["view", "read", "logs", "metrics", "look", "debug", "check"] },
+        { "id": "power-user", "name": "PowerUser", "risk": "admin", "sensitive_data": false, "default_days": 7, "max_days": 14, "can": "Create and change resources (no IAM)", "keywords": ["deploy", "change", "create", "modify", "restart", "write"] },
+        { "id": "administrator", "name": "Administrator", "risk": "admin", "sensitive_data": true, "default_days": 1, "max_days": 3, "can": "Full control including IAM", "keywords": ["admin", "administrator", "iam", "full access", "root"] }
+      ]
+    },
+    {
+      "id": "warehouse", "name": "Data warehouse (Snowflake)", "aliases": ["snowflake", "data warehouse", "warehouse", "dwh", "sql access", "analytics db"],
+      "owner": "vikram.rao", "backup_owner": "arjun.mehta", "data_class": "confidential",
+      "roles": [
+        { "id": "analyst", "name": "Analyst (no PII)", "risk": "standard", "sensitive_data": false, "default_days": 90, "max_days": 180, "can": "Query masked, non-PII schemas", "keywords": ["query", "sql", "analyse", "analyze", "analysis", "read"] },
+        { "id": "pii-reader", "name": "PII reader", "risk": "standard", "sensitive_data": true, "default_days": 14, "max_days": 30, "can": "Query unmasked customer PII", "keywords": ["pii", "unmasked", "customer data", "personal data", "raw customer"] }
+      ]
+    },
+    {
+      "id": "payments", "name": "Payments console", "aliases": ["payments", "payments console", "payouts", "vendor payments", "payment runs"],
+      "owner": "kavya.nair", "backup_owner": "vikram.rao", "data_class": "restricted",
+      "roles": [
+        { "id": "viewer", "name": "Viewer", "risk": "low", "sensitive_data": true, "default_days": 30, "max_days": 90, "can": "View payment runs and status", "keywords": ["view", "see", "status", "check", "look"] },
+        { "id": "creator", "name": "Payment creator", "risk": "standard", "sensitive_data": true, "default_days": 90, "max_days": 180, "can": "Create payment runs", "keywords": ["create", "prepare", "raise", "set up"], "conflicts_with": ["payments:approver"] },
+        { "id": "approver", "name": "Payment approver", "risk": "admin", "sensitive_data": true, "default_days": 90, "max_days": 180, "can": "Release payment runs", "keywords": ["approve", "release", "authorise", "authorize"], "conflicts_with": ["payments:creator"] }
+      ]
+    },
+    {
+      "id": "peoplehub", "name": "PeopleHub HRIS", "aliases": ["peoplehub", "hris", "hr system", "workday", "employee records", "payroll data"],
+      "owner": "ananya.das", "backup_owner": "farhan.sheikh", "data_class": "restricted",
+      "roles": [
+        { "id": "org-chart", "name": "Org chart", "risk": "low", "sensitive_data": false, "default_days": 30, "max_days": 180, "can": "See the org chart and work contact details", "keywords": ["org chart", "who reports", "contact", "directory"] },
+        { "id": "hr-analyst", "name": "HR analyst", "risk": "standard", "sensitive_data": true, "default_days": 30, "max_days": 90, "can": "Read employee records and compensation", "keywords": ["employee records", "salary", "compensation", "headcount", "attrition", "payroll"] }
+      ]
+    }
+  ],
+  "non_requestable": [
+    { "match": ["domain admin", "global admin", "root account", "org owner", "super admin", "break glass", "break-glass"], "reason": "Break-glass and organisation-owner access is not requestable through AccessPilot. Raise a P1 with the security on-call." }
+  ]
+}

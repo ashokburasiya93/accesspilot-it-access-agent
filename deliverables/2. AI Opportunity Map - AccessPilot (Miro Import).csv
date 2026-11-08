@@ -1,0 +1,79 @@
+﻿Frame,Type,Title,Text,Color,Impact,Feasibility,Score,Quadrant
+1 Header,Sticky,Persona,"Tara, IT service desk analyst at Kestrel Fintech (one of 6 for ~1,200 staff). Handles ~1,100 access requests a month from Slack, email and tickets; secondary users: employees, managers, app owners, security/audit. [synthetic]",yellow,,,,
+1 Header,Sticky,Root cause,"Kestrel doesn't lack an access policy; it lacks one a system can enforce. Policy lives in heads and a spreadsheet, and grant, approval and removal are separate manual steps, so nothing ties a grant to its approver or its end date.",yellow,,,,
+1 Header,Sticky,Evidence,"~1,100 requests/month (~35% of tickets; vendor range 30–40%); ~22 min analyst time each; median 2 days to access; ~25% of grants over-provisioned at review; ~60% with no expiry; approvals in email threads. [synthetic figures]",yellow,,,,
+1 Header,Sticky,Goal,"Find where AI safely removes the manual steps, including the writes, score the options and scope an MVP that hits: <1 h to access, 70% end to end, 100% of grants with expiry + audit, 0 unauthorized writes.",yellow,,,,
+2 Workflow,Sticky,S1 Employee asks | Today,"Free text in Slack, email or a ticket: “give me what Karan has”, “the finance drive”.",gray,,,,
+2 Workflow,Sticky,S1 Employee asks | Pain,Doesn't know the app's real name or the role; adds no justification or end date.,red,,,,
+2 Workflow,Sticky,S1 Employee asks | AI opportunities,"O1, O2, O11",light_green,,,,
+2 Workflow,Sticky,S2 Analyst interprets | Today,"Analyst guesses the app and role, often mirrors a colleague's access.",gray,,,,
+2 Workflow,Sticky,S2 Analyst interprets | Pain,~22 min per request; ~25% over-provisioned; injection-style text (“manager already approved”) is taken at face value.,red,,,,
+2 Workflow,Sticky,S2 Analyst interprets | AI opportunities,"O1, O2, O9",light_green,,,,
+2 Workflow,Sticky,S3 Find approver & check policy | Today,Looks up the manager and app owner in a personal spreadsheet.,gray,,,,
+2 Workflow,Sticky,S3 Find approver & check policy | Pain,"Wrong approver, self-approval possible, no rule for sensitive data or contractors.",red,,,,
+2 Workflow,Sticky,S3 Find approver & check policy | AI opportunities,"O3, O4",light_green,,,,
+2 Workflow,Sticky,S4 Chase approval | Today,"Email, then Slack after a day.",gray,,,,
+2 Workflow,Sticky,S4 Chase approval | Pain,Most of the 2-day wait; approval evidence stays in email.,red,,,,
+2 Workflow,Sticky,S4 Chase approval | AI opportunities,"O4, O5",light_green,,,,
+2 Workflow,Sticky,S5 Grant | Today,By hand in the identity provider or app admin page.,gray,,,,
+2 Workflow,Sticky,S5 Grant | Pain,"Typos, wrong group; no expiry set; no check that approvals match the policy.",red,,,,
+2 Workflow,Sticky,S5 Grant | AI opportunities,"O6, O7",light_green,,,,
+2 Workflow,Sticky,S6 Close & record | Today,Ticket closed; approval email pasted if remembered.,gray,,,,
+2 Workflow,Sticky,S6 Close & record | Pain,Partial record; audit sampling finds missing approvals.,red,,,,
+2 Workflow,Sticky,S6 Close & record | AI opportunities,O8,light_green,,,,
+2 Workflow,Sticky,S7 Remove access | Today,Only when the quarterly review or a leaver process flags it.,gray,,,,
+2 Workflow,Sticky,S7 Remove access | Pain,Access outlives projects and roles; standing admin access.,red,,,,
+2 Workflow,Sticky,S7 Remove access | AI opportunities,"O6, O10",light_green,,,,
+3 Opportunities,Card,O1 Understand the request (app + role),"Map free text to one catalog app and role. Why AI: messy language, synonyms, “same as Karan”. Model proposes only; validated against the catalog.",blue,5,5,25,Do first (MVP)
+3 Opportunities,Card,O2 Least-privilege role recommender,"Pick the lowest role that covers the stated task (“only need to check numbers” → Viewer). Why AI: needs reading intent, not keywords.",blue,5,4,20,Do first (MVP)
+3 Opportunities,Card,O3 Policy-as-code tiers,"Tier 0 auto / tier 1 manager / tier 2 manager + owner, plus deny rules (SoD, contractor, leaver). Not AI: deterministic rules, so the model can't be talked out of them.",blue,5,5,25,Do first (MVP)
+3 Opportunities,Card,O4 Approver routing + inbox,Name the right manager and owner (backup when they are the requester); approvals in one inbox or Slack card. Not AI: directory lookup.,blue,5,5,25,Do first (MVP)
+3 Opportunities,Card,O5 Approval nudges and summaries,Summarise the request and risk for the approver; remind after 4 h. AI for the summary only.,blue,3,4,12,Quick add-on
+3 Opportunities,Card,O6 Grant with expiry + one-click revoke,"Single writer that re-checks policy, always sets an end date, and restores the previous role on revoke or expiry.",blue,5,4,20,Do first (MVP)
+3 Opportunities,Card,O7 Publish as MCP server,"Same tools and guardrails for every client (web, Claude, Slack bot). Standard protocol; identity from the session.",blue,4,4,16,Do first (MVP)
+3 Opportunities,Card,O8 Append-only audit log,"Hash-chained record of request, proposal, decision, approvers, action, result and every blocked attempt.",blue,5,5,25,Do first (MVP)
+3 Opportunities,Card,O9 Injection & secret screening,"Strip hidden characters, redact pasted credentials, flag instructions in request text and force human review.",blue,4,5,20,Do first (MVP)
+3 Opportunities,Card,O10 Access review assistant,"Quarterly: summarise who has what, flag unused or risky access for owners. Needs usage data we don't have yet.",blue,4,2,8,Park / avoid
+3 Opportunities,Card,O11 Proactive access by role/joiner,Predict what a new joiner needs from peers. Risky: bakes in over-provisioning; needs HR feed.,blue,3,2,6,Park / avoid
+3 Opportunities,Card,O12 Fully autonomous approval by the model,Let the LLM decide approve/deny. Rejected: OWASP excessive agency + injection; no fool-proof defence.,blue,2,1,2,Park / avoid
+4 Scoring,Sticky,Scoring rubric,"Impact (1-5): cuts wait time, analyst effort or audit risk, times how often it happens. Feasibility (1-5): data we have, safety of failure, build effort for a prototype. Do first = I ≥ 4 and F ≥ 4.",yellow,,,,
+5 Impact x Feasibility 2x2,Sticky,O1 Understand the request (app + role),I5 x F5 = 25,green,5,5,25,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O3 Policy-as-code tiers,I5 x F5 = 25,green,5,5,25,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O4 Approver routing + inbox,I5 x F5 = 25,green,5,5,25,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O8 Append-only audit log,I5 x F5 = 25,green,5,5,25,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O2 Least-privilege role recommender,I5 x F4 = 20,green,5,4,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O6 Grant with expiry + one-click revoke,I5 x F4 = 20,green,5,4,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O9 Injection & secret screening,I4 x F5 = 20,green,4,5,20,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O7 Publish as MCP server,I4 x F4 = 16,green,4,4,16,Do first (MVP)
+5 Impact x Feasibility 2x2,Sticky,O5 Approval nudges and summaries,I3 x F4 = 12,light_blue,3,4,12,Quick add-on
+5 Impact x Feasibility 2x2,Sticky,O10 Access review assistant,I4 x F2 = 8,gray,4,2,8,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O11 Proactive access by role/joiner,I3 x F2 = 6,gray,3,2,6,Park / avoid
+5 Impact x Feasibility 2x2,Sticky,O12 Fully autonomous approval by the model,I2 x F1 = 2,gray,2,1,2,Park / avoid
+6 Should / Should NOT,Sticky,Should do,Grant and revoke access itself once policy and approvals allow it (that is where the value is).,green,,,,
+6 Should / Should NOT,Sticky,Should do,Propose the least-privileged role and say why.,green,,,,
+6 Should / Should NOT,Sticky,Should do,Put an expiry on every grant and remove it automatically.,green,,,,
+6 Should / Should NOT,Sticky,Should do,Route to named approvers and show the requester who they are waiting for.,green,,,,
+6 Should / Should NOT,Sticky,Should do,"Log every request, decision, approval, action and blocked attempt.",green,,,,
+6 Should / Should NOT,Sticky,Should do,Work from any MCP client with the same guardrails.,green,,,,
+6 Should / Should NOT,Sticky,Should NOT do,"Decide tiers, approvers or expiry with the model.",red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,"Approve anything, ever (including its own requests).",red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Grant to anyone other than the signed-in requester.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,"Ask for, store or use passwords and tokens.",red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,"Grant break-glass, domain admin or org-owner access.",red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Follow instructions found in request or ticket text.,red,,,,
+6 Should / Should NOT,Sticky,Should NOT do,Edit or delete audit entries.,red,,,,
+7 Feature to AI to Guardrails,Table row,F1 Request understanding,"From: O1, O2, O9 | AI capability: LLM structured extraction to {app, role, duration} with least-privilege instruction | Inputs: request text (untrusted), requester title, catalog | Guardrails: JSON only, unknown fields dropped, app/role must exist, secrets redacted first, injection flag → human review | Fallback: keyword parser",violet,,,,
+7 Feature to AI to Guardrails,Table row,F2 Policy engine + routing,"From: O3, O4 | AI capability: none (deterministic) | Inputs: catalog risk, data class, directory, active grants | Guardrails: tiers in code, SoD/contractor/leaver denies, never the requester, distinct approvers, re-checked at write time",violet,,,,
+7 Feature to AI to Guardrails,Table row,"F3 Grant, expiry, revoke","From: O6 | AI capability: none | Guardrails: single writer, expiry mandatory and capped, rollback to the replaced role, idempotent, revoke rights limited to holder/manager/owner/IT",violet,,,,
+7 Feature to AI to Guardrails,Table row,F4 MCP server + audit,"From: O7, O8 | AI capability: none | Guardrails: identity from session, strict schemas, hash-chained append-only log, scoped log reads",violet,,,,
+7 Feature to AI to Guardrails,Table row,Next (post-MVP),"From: O5, O10 | Approval summaries in Slack, access-review assistant once usage data exists",violet,,,,
+8 Guardrails & risks,Sticky,Global guardrail,"Model proposes, code decides: tier, approvers and expiry never come from the model.",orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,"Untrusted input is data: request, justification, ticket and comment text never become instructions.",orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,"Every write is reversible: expiry on every grant, one-click revoke with rollback.",orange,,,,
+8 Guardrails & risks,Sticky,Global guardrail,"Everything is evidence: append-only, hash-chained audit, including blocked attempts.",orange,,,,
+8 Guardrails & risks,Sticky,Risk: Prompt injection gets elevated access,"Mitigation: tiers in code, flag forces human review, model output limited to catalog values; 32-case red-team gate at 100%",orange,,,,
+8 Guardrails & risks,Sticky,Risk: Wrong role proposed (over-provisioning),"Mitigation: least-privilege prompt, higher roles need more approvers, eval gate on over-provisioning ≤ 5%",orange,,,,
+8 Guardrails & risks,Sticky,Risk: Approver rubber-stamps,Mitigation: approver sees the tier reasons and flags; tier 2 needs two different people; expiry limits blast radius,orange,,,,
+8 Guardrails & risks,Sticky,Risk: Connector writes the wrong entitlement,"Mitigation: single writer, read-back check in production, revoke restores previous state",orange,,,,
+8 Guardrails & risks,Sticky,Risk: Audit log tampered,Mitigation: hash chain detects edits/deletes; production anchors the head in WORM storage,orange,,,,
+9 Hand-off,Sticky,Step 3 PRD,"North Star = correctly scoped grants delivered without an analyst touching them. MVP = O1, O2, O3, O4, O6, O7, O8, O9 as F1–F4. Safety gates: 0 unauthorized writes, 100% red-team blocked.",yellow,,,,

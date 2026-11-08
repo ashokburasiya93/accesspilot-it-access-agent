@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AccessPilot</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="logo">AP</span><div><h1>AccessPilot</h1><p>IT access requests that act on approval</p></div></div>
+    <div class="who">
+      <label for="persona">Signed in as <small>(demo switcher)</small></label>
+      <select id="persona"></select>
+    </div>
+  </header>
+  <div class="strip">
+    <span class="pill warn">Synthetic data: Kestrel Fintech is fictional</span>
+    <span class="pill" id="model">Model: …</span>
+    <span class="pill" id="clock">Today: …</span>
+    <span class="pill ok" id="chain">Audit chain: …</span>
+  </div>
+
+  <main>
+    <section class="card" id="ask">
+      <h2>Ask for access</h2>
+      <p class="hint">Say what you need to do in plain words. You don't need to know the role name.</p>
+      <textarea id="text" rows="3" maxlength="2000" placeholder="e.g. I need to read the specs in the product team's Confluence space"></textarea>
+      <div class="chips" id="examples"></div>
+      <div class="row"><button id="send" class="primary">Request access</button><span id="busy" class="muted"></span></div>
+      <div id="result"></div>
+    </section>
+
+    <section class="card" id="approvals">
+      <h2>Waiting for my approval <span class="count" id="nApprovals"></span></h2>
+      <div id="approvalList" class="list"></div>
+    </section>
+
+    <section class="card">
+      <h2>My access</h2>
+      <div id="myGrants" class="list"></div>
+      <h3>My requests</h3>
+      <div id="myRequests" class="list"></div>
+    </section>
+
+    <section class="card" id="teamCard">
+      <h2>My team and the apps I own</h2>
+      <div id="teamGrants" class="list"></div>
+    </section>
+
+    <section class="card wide">
+      <h2>Audit log <small class="muted" id="auditScope"></small></h2>
+      <p class="hint">Append-only. Each entry stores the hash of the one before it, so an edited or deleted line breaks the chain.</p>
+      <div class="tablewrap"><table id="audit"><thead><tr><th>#</th><th>Time</th><th>Event</th><th>Actor</th><th>Details</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section class="card wide">
+      <h2>How the policy works</h2>
+      <div class="tiers">
+        <div><b>Tier 0: auto-approved</b><p>Low-risk viewer roles, no sensitive data, expiry within 30 days.</p></div>
+        <div><b>Tier 1: manager</b><p>Standard roles, restricted systems, longer viewer access, or any request whose text tried to instruct the system.</p></div>
+        <div><b>Tier 2: manager + app owner</b><p>Admin roles and any role that can read sensitive data.</p></div>
+        <div><b>Always</b><p>Every grant expires. No one approves their own request. The agent can't approve. Contractors can't hold admin or sensitive roles. Payment creator and approver can't be combined.</p></div>
+      </div>
+      <details><summary>App and role catalog</summary><div class="tablewrap"><table id="catalog"><thead><tr><th>App</th><th>Role</th><th>Can</th><th>Risk</th><th>Max days</th></tr></thead><tbody></tbody></table></div></details>
+      <details><summary>Use it from any MCP client</summary>
+        <p class="hint">The same tools, with the same guardrails, are published as an MCP server. Local (stdio):</p>
+        <pre>{ "mcpServers": { "accesspilot": { "command": "node", "args": ["mcp/stdio.js"], "env": { "ACCESSPILOT_USER": "priya.sharma" } } } }</pre>
+        <p class="hint">HTTP: <code>POST /api/mcp</code> (JSON-RPC 2.0). Tools: <span id="tools"></span>.</p>
+      </details>
+    </section>
+
+    <section class="card wide demo">
+      <h2>Demo controls</h2>
+      <p class="hint">Move simulated time forward to watch grants expire and roll back. Reset archives the audit log rather than deleting it.</p>
+      <div class="row"><button data-days="11">+11 days</button><button data-days="31">+31 days</button><button id="reset" class="ghost">Reset demo</button></div>
+    </section>
+  </main>
+  <footer>Course prototype. All people, apps and numbers are synthetic. Grants are written to a simulated identity provider.</footer>
+  <script src="app.js"></script>
+</body>
+</html>

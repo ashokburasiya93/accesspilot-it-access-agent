@@ -1,0 +1,15 @@
+{
+  "_note": "Access policy thresholds. The rules that use them live in lib/policy.js and are enforced in code, never by the model.",
+  "version": "2026-11-01",
+  "auto_approve_max_days": 30,
+  "absolute_max_days": 180,
+  "tiers": {
+    "0": { "name": "Auto-approved", "approvals": [] },
+    "1": { "name": "Manager approval", "approvals": ["manager"] },
+    "2": { "name": "Manager + app owner approval", "approvals": ["manager", "app_owner"] }
+  },
+  "data_class_min_tier": { "internal": 0, "confidential": 0, "restricted": 1 },
+  "contractor_blocked": { "sensitive_data": true, "admin": true },
+  "injection_min_tier": 1,
+  "expiry_warning_days": 3
+}

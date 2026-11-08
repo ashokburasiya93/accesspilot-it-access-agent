@@ -1,0 +1,14 @@
+{
+  "name": "accesspilot-it-access-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AccessPilot: an IT access-request agent published as an MCP server, with approval tiers in code, expiry + revoke rollback and a hash-chained audit log (synthetic data, course prototype).",
+  "engines": { "node": ">=20" },
+  "bin": { "accesspilot-mcp": "mcp/stdio.js" },
+  "scripts": {
+    "test": "node evals/run_rules.js",
+    "evals:live": "node evals/run_live.js",
+    "mcp": "node mcp/stdio.js",
+    "dev": "node server.js"
+  }
+}

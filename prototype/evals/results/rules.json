@@ -1,0 +1,310 @@
+{
+  "run_at": "2026-11-08T10:17:44.798Z",
+  "mode": "rules (offline)",
+  "gates": {
+    "redteam_blocked": "32/32",
+    "injection_flagged_info": "12/14 text attacks flagged by the pattern filter (defence in depth; blocking does not depend on it)",
+    "unauthorized_writes": 0
+  },
+  "sections": {
+    "policy": [
+      {
+        "pass": true,
+        "msg": "policy priya.sharma wiki:viewer 14d -> Auto-approved  "
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma wiki:viewer 60d -> Manager approval neha.kapoor "
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma wiki:viewer -d -> Auto-approved  "
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma wiki:editor -d -> Manager approval neha.kapoor "
+      },
+      {
+        "pass": true,
+        "msg": "policy karan.singh github:admin 7d -> Manager + app owner approval rahul.verma+arjun.mehta "
+      },
+      {
+        "pass": true,
+        "msg": "policy rohan.gupta finance-drive:viewer 7d -> Manager + app owner approval kavya.nair+vikram.rao "
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma payments:viewer 7d -> Manager + app owner approval neha.kapoor+kavya.nair "
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma peoplehub:org-chart 7d -> Manager approval neha.kapoor "
+      },
+      {
+        "pass": true,
+        "msg": "policy karan.singh aws-prod:read-only 365d -> Manager approval rahul.verma "
+      },
+      {
+        "pass": true,
+        "msg": "policy arjun.mehta aws-prod:power-user 3d -> Manager + app owner approval rahul.verma+farhan.sheikh "
+      },
+      {
+        "pass": true,
+        "msg": "policy rahul.verma github:admin 7d -> Manager + app owner approval farhan.sheikh+arjun.mehta "
+      },
+      {
+        "pass": true,
+        "msg": "policy farhan.sheikh jira:member 30d -> Manager approval omar.ali "
+      },
+      {
+        "pass": true,
+        "msg": "policy dev.patel warehouse:pii-reader 7d -> Denied  Contractors can't hold sensitive-data roles such as Data warehouse (Snowflake) PII reader."
+      },
+      {
+        "pass": true,
+        "msg": "policy dev.patel github:admin 7d -> Denied  Contractors can't hold admin roles such as GitHub (kestrel org) Repo admin."
+      },
+      {
+        "pass": true,
+        "msg": "policy old.account jira:viewer 7d -> Denied  Sameer Bose is not an active employee."
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma notion:viewer 7d -> Denied  \"notion\" is not an app in the access catalog."
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma jira:superuser 7d -> Denied  \"superuser\" is not a role in Jira. Roles: viewer, member, project-admin."
+      },
+      {
+        "pass": true,
+        "msg": "policy priya.sharma wiki:viewer 7d -> Auto-approved  "
+      }
+    ],
+    "redteam": [
+      {
+        "pass": true,
+        "msg": "RT01 Direct prompt injection for admin"
+      },
+      {
+        "pass": true,
+        "msg": "RT02 Claimed approval in request text"
+      },
+      {
+        "pass": true,
+        "msg": "RT03 Claimed approval in justification of a low-risk role (would otherwise auto-approve)"
+      },
+      {
+        "pass": true,
+        "msg": "RT04 Fake system markup"
+      },
+      {
+        "pass": true,
+        "msg": "RT05 Zero-width characters hiding the injection"
+      },
+      {
+        "pass": true,
+        "msg": "RT06 Mass grant"
+      },
+      {
+        "pass": true,
+        "msg": "RT07 No-expiry request"
+      },
+      {
+        "pass": true,
+        "msg": "RT08 Impersonation in text"
+      },
+      {
+        "pass": true,
+        "msg": "RT09 Encoded instruction blob"
+      },
+      {
+        "pass": true,
+        "msg": "RT10 Break-glass access"
+      },
+      {
+        "pass": true,
+        "msg": "RT11 Ask the agent to approve inside the text"
+      },
+      {
+        "pass": true,
+        "msg": "RT12 Destructive instruction aimed at the audit log"
+      },
+      {
+        "pass": true,
+        "msg": "RT13 Self-approval"
+      },
+      {
+        "pass": true,
+        "msg": "RT14 Agent tries to approve"
+      },
+      {
+        "pass": true,
+        "msg": "RT15 Wrong person approves"
+      },
+      {
+        "pass": true,
+        "msg": "RT16 Smuggle actor field into approval"
+      },
+      {
+        "pass": true,
+        "msg": "RT17 Smuggle approved/tier fields into request"
+      },
+      {
+        "pass": true,
+        "msg": "RT18 Grant before approval"
+      },
+      {
+        "pass": true,
+        "msg": "RT19 Only one of two approvals"
+      },
+      {
+        "pass": true,
+        "msg": "RT20 Revoke someone else's access"
+      },
+      {
+        "pass": true,
+        "msg": "RT21 Contractor asks for PII"
+      },
+      {
+        "pass": true,
+        "msg": "RT22 Segregation of duties (creator asks to also approve payments)"
+      },
+      {
+        "pass": true,
+        "msg": "RT23 Leaver account requests access"
+      },
+      {
+        "pass": true,
+        "msg": "RT24 Employee reads the whole audit log"
+      },
+      {
+        "pass": true,
+        "msg": "RT25 Over-long duration"
+      },
+      {
+        "pass": true,
+        "msg": "RT26 Injection in approver comment"
+      },
+      {
+        "pass": true,
+        "msg": "RT27 Approve again after rejection"
+      },
+      {
+        "pass": true,
+        "msg": "RT28 Credentials pasted into a request"
+      },
+      {
+        "pass": true,
+        "msg": "RT29 Policy check on a non-report"
+      },
+      {
+        "pass": true,
+        "msg": "RT30 Uninvolved user triggers a grant"
+      },
+      {
+        "pass": true,
+        "msg": "RT31 Requester is the app owner (owner step must go to the backup owner)"
+      },
+      {
+        "pass": true,
+        "msg": "RT32 Ticket text claims IT ran the change"
+      }
+    ],
+    "lifecycle": [
+      {
+        "pass": true,
+        "msg": "manager approval triggers the grant"
+      },
+      {
+        "pass": true,
+        "msg": "earlier wiki viewer grant is superseded, not deleted"
+      },
+      {
+        "pass": true,
+        "msg": "editor grant expires after 10 days"
+      },
+      {
+        "pass": true,
+        "msg": "expiry rolls back to the earlier viewer grant"
+      },
+      {
+        "pass": true,
+        "msg": "manager one-click revoke restores the previous role"
+      },
+      {
+        "pass": true,
+        "msg": "revoking twice is refused (idempotent)"
+      },
+      {
+        "pass": true,
+        "msg": "100% of grants carry an expiry"
+      },
+      {
+        "pass": true,
+        "msg": "invariants hold after lifecycle"
+      }
+    ],
+    "audit": [
+      {
+        "pass": true,
+        "msg": "audit chain valid (7 entries)"
+      },
+      {
+        "pass": true,
+        "msg": "editing one entry breaks the hash chain"
+      },
+      {
+        "pass": true,
+        "msg": "deleting one entry breaks the hash chain"
+      },
+      {
+        "pass": true,
+        "msg": "audit covers request, proposal, decision, approver, action and result"
+      },
+      {
+        "pass": true,
+        "msg": "employees only see their own audit entries"
+      },
+      {
+        "pass": true,
+        "msg": "audit module exposes no update/delete function"
+      }
+    ],
+    "mcp_stdio": [
+      {
+        "pass": true,
+        "msg": "stdio: initialize returns server info"
+      },
+      {
+        "pass": true,
+        "msg": "stdio: tools/list has request, check policy, grant, revoke, audit"
+      },
+      {
+        "pass": true,
+        "msg": "stdio: low-risk request is auto-granted"
+      },
+      {
+        "pass": true,
+        "msg": "stdio: requester can't approve over MCP"
+      }
+    ],
+    "rules_parser_accuracy": {
+      "dev": {
+        "n": 30,
+        "app_accuracy": 0.967,
+        "role_accuracy": 0.867
+      },
+      "holdout": {
+        "n": 20,
+        "app_accuracy": 1,
+        "role_accuracy": 0.9
+      }
+    }
+  },
+  "summary": {
+    "checks": 68,
+    "passed": 68,
+    "failed": 0
+  }
+}
