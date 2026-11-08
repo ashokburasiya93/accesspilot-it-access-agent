@@ -6,8 +6,8 @@ The tools are published as an **MCP server**, so the web demo, Claude, Cursor or
 
 > **All data in this repository is synthetic.** Kestrel Fintech, its 18 employees, 11 apps, 28 roles, the seeded grants and every eval request are made up for an AI PM course project. Grants are written to a simulated identity provider (`.state/state.json`), not to a real one. The 30–40% "access requests share of service desk volume" figure in the docs is a vendor figure quoted in the problem statement; every other number about the company is illustrative.
 
-- **Live app:** _added after deploy_ (no sign-in; pick a persona in the header)
-- **Miro opportunity board:** _link added after the board is published_ (built from `2. AI Opportunity Mapping - AccessPilot (Miro Import).csv`)
+- **Live app:** https://accesspilot-it-access-agent.vercel.app (no sign-in; pick a persona in the header)
+- **Miro opportunity board:** https://miro.com/app/board/uXjVEQ8_0Rg=/ (built from `2. AI Opportunity Mapping - AccessPilot (Miro Import).csv`)
 
 ![Flow](docs/accesspilot_flow.png)
 

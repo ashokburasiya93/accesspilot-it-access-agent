@@ -4,8 +4,8 @@ AccessPilot turns a plain-language access request into the right app and least-p
 
 > **All company data is synthetic.** Kestrel Fintech, its people and every number about it are made up for an AI PM course project. The 30–40% share of service desk volume is a vendor figure quoted in the problem statement.
 
-- **Live app:** _added after deploy_ (no sign-in; pick a persona in the header)
-- **Miro opportunity board:** _added after the board is published_
+- **Live app:** https://accesspilot-it-access-agent.vercel.app (no sign-in; pick a persona in the header)
+- **Miro opportunity board:** https://miro.com/app/board/uXjVEQ8_0Rg=/
 - **Problem statement:** [PROBLEM_STATEMENT.md](PROBLEM_STATEMENT.md)
 
 ## Deliverables in this repo
